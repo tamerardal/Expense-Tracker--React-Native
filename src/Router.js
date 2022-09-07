@@ -4,7 +4,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import MyExpensesScreen from './screens/MyExpensesScreen';
+import MyExpenses from './screens/MyExpensesScreen';
+import Transaction from './screens/TransactionScreen';
+import History from './screens/HistoryScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -12,16 +14,20 @@ const screenOptions = ({route}) => ({
   tabBarIcon: ({focused, color, size}) => {
     let iconName;
 
-    if (route.name === 'Özet') {
+    if (route.name === 'MyExpenses') {
       iconName = focused ? 'home' : 'home';
-    } else if (route.name === 'Settings') {
-      iconName = focused ? 'ios-list-box' : 'ios-list';
+    } else if (route.name === 'Transaction') {
+      iconName = focused ? 'contrast' : 'contrast';
+    } else if (route.name === 'History') {
+      iconName = focused
+        ? 'clipboard-text-clock-outline'
+        : 'clipboard-text-clock-outline';
     }
 
     // You can return any component that you like here!
     return <Icon name={iconName} size={32} color={color} />;
   },
-  tabBarActiveTintColor: 'purple',
+  tabBarActiveTintColor: '#4682b4',
   tabBarInactiveTintColor: 'gray',
 });
 
@@ -30,9 +36,19 @@ function Router() {
     <NavigationContainer>
       <Tab.Navigator screenOptions={screenOptions}>
         <Tab.Screen
-          name="Özet"
-          component={MyExpensesScreen}
+          name="MyExpenses"
+          component={MyExpenses}
           options={{headerTitle: 'Harcamalarım'}}
+        />
+        <Tab.Screen
+          name="Transaction"
+          component={Transaction}
+          options={{headerShadowVisible: false}}
+        />
+        <Tab.Screen
+          name="History"
+          component={History}
+          options={{headerShadowVisible: false}}
         />
       </Tab.Navigator>
     </NavigationContainer>
