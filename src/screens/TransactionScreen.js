@@ -48,7 +48,7 @@ function TransactionScreen({navigation}) {
   };
 
   function inchandleSubmit() {
-    if (!price || !value) {
+    if (!price || !value || !date) {
       Alert.alert('HATA', 'Kayıt formunda hiçbir alan boş geçilemez.');
     } else {
       transactions.isIncome = true;
@@ -61,7 +61,7 @@ function TransactionScreen({navigation}) {
       );
       navigation.dispatch(
         CommonActions.navigate({
-          name: 'MyExpenses',
+          name: 'Summary',
           params: {transactions},
         }),
       );
@@ -69,7 +69,7 @@ function TransactionScreen({navigation}) {
     }
   }
   function exphandleSubmit() {
-    if (!price || !value) {
+    if (!price || !value || !date) {
       Alert.alert('HATA', 'Kayıt formunda hiçbir alan boş geçilemez.');
     } else {
       transactions.isIncome = false;
