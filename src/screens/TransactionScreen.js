@@ -16,7 +16,7 @@ import AddIncome from '../components/AddIncome/AddIncome';
 
 function TransactionScreen({navigation}) {
   let id = Math.random();
-  const [price, setPrice] = useState('');
+  const [price, setPrice] = useState(0);
   const [date, setDate] = useState(new Date());
   const [isIncome, setisIncome] = useState(false);
   const [viewMode, setViewMode] = React.useState('expense');
@@ -81,7 +81,7 @@ function TransactionScreen({navigation}) {
       );
       navigation.dispatch(
         CommonActions.navigate({
-          name: 'MyExpenses',
+          name: 'Summary',
           params: {transactions},
         }),
       );
