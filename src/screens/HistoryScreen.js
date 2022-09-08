@@ -41,24 +41,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: 'lightgray',
   },
-  seperator: {
-    borderWidth: 0.2,
-    borderColor: 'gray',
-    marginRight: 10,
-    marginLeft: 10,
-  },
-  totalContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginLeft: 5,
-    marginRight: 5,
-  },
-  incomeTitle: {
-    color: 'green',
-  },
-  expenseTitle: {
-    color: 'tomato',
-  },
 });
 
 export default HistoryScreen;
