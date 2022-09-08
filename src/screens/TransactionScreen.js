@@ -11,18 +11,15 @@ import {
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {CommonActions} from '@react-navigation/native';
 
-import Input from '../components/input/input';
-import Button from '../components/button/button';
-import DropDownPicker from 'react-native-dropdown-picker';
-import DatePicker from 'react-native-date-picker';
+import AddExpense from '../components/AddExpense/AddExpense';
+import AddIncome from '../components/AddIncome/AddIncome';
 
-function AddExpense({navigation}) {
+function TransactionScreen({navigation}) {
   let id = Math.random();
   const [price, setPrice] = useState('');
   const [date, setDate] = useState(new Date());
   const [isIncome, setisIncome] = useState(false);
   const [viewMode, setViewMode] = React.useState('expense');
-  const [selectedCategory, setSelectedCategory] = React.useState(null);
 
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
@@ -130,86 +127,41 @@ function AddExpense({navigation}) {
           </View>
         )}
       />
-
-      {/* <Input label="Başlık" onChangeText={setTitle} />
-      <Input label="Miktar" onChangeText={setPrice} />
-      <DropDownPicker
-        searchTextInputProps="Kategori seçiniz"
-        open={open}
-        value={value}
-        items={items}
-        setOpen={setOpen}
-        setValue={setValue}
-        setItems={setItems}
-      />
-      <Button text="Kaydet" onPress={handleSubmit} /> */}
       <ScrollView
         contentContainerStyle={{
           paddingBottom: 60,
         }}>
         {viewMode === 'expense' && (
-          <View style={styles.container}>
-            <DropDownPicker
-              searchTextInputProps="Kategori seçiniz"
-              open={open}
-              value={value}
-              items={itemsExpense}
-              setOpen={setOpen}
-              setValue={setValue}
-              setItems={setItemsExp}
-            />
-            <Input label="Miktar" onChangeText={setPrice} />
-            <Button
-              text="Tarih Seçiniz"
-              onPress={() => setDatePickerOpen(true)}
-            />
-            <DatePicker
-              modal
-              mode="date"
-              open={datePickerOpen}
-              date={date}
-              onConfirm={date => {
-                setDatePickerOpen(false);
-                setDate(date);
-              }}
-              onCancel={() => {
-                setDatePickerOpen(false);
-              }}
-            />
-            <Button text="EKLE" onPress={exphandleSubmit} />
-          </View>
+          <AddExpense
+            date={date}
+            datePickerOpen={datePickerOpen}
+            exphandleSubmit={exphandleSubmit}
+            open={open}
+            value={value}
+            items={itemsExpense}
+            setOpen={setOpen}
+            setValue={setValue}
+            setItems={setItemsExp}
+            setDate={setDate}
+            setDatePickerOpen={setDatePickerOpen}
+            setPrice={setPrice}
+          />
         )}
         {viewMode === 'income' && (
-          <View style={{flex: 1}}>
-            <DropDownPicker
-              searchTextInputProps="Kategori seçiniz"
-              open={open}
-              value={value}
-              items={itemsIncome}
-              setOpen={setOpen}
-              setValue={setValue}
-              setItems={setItemsInc}
-            />
-            <Input label="Miktar" onChangeText={setPrice} />
-            <Button
-              text="Tarih Seçiniz"
-              onPress={() => setDatePickerOpen(true)}
-            />
-            <DatePicker
-              modal
-              mode="date"
-              open={datePickerOpen}
-              date={date}
-              onConfirm={date => {
-                setDatePickerOpen(false);
-                setDate(date);
-              }}
-              onCancel={() => {
-                setDatePickerOpen(false);
-              }}
-            />
-            <Button text="EKLE" onPress={inchandleSubmit} />
-          </View>
+          <AddIncome
+            date={date}
+            datePickerOpen={datePickerOpen}
+            exphandleSubmit={inchandleSubmit}
+            open={open}
+            value={value}
+            items={itemsIncome}
+            setOpen={setOpen}
+            setValue={setValue}
+            setItems={setItemsInc}
+            setDate={setDate}
+            setDatePickerOpen={setDatePickerOpen}
+            setPrice={setPrice}
+          />
         )}
       </ScrollView>
     </SafeAreaView>
@@ -229,4 +181,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AddExpense;
+export default TransactionScreen;
