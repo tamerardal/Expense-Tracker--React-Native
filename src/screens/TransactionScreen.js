@@ -58,6 +58,12 @@ function AddExpense({navigation}) {
       //navigation.navigate('MyExpensesScreen', {transactions});
       navigation.dispatch(
         CommonActions.navigate({
+          name: 'History',
+          params: {transactions},
+        }),
+      );
+      navigation.dispatch(
+        CommonActions.navigate({
           name: 'MyExpenses',
           params: {transactions},
         }),
@@ -70,6 +76,12 @@ function AddExpense({navigation}) {
       Alert.alert('HATA', 'Kayıt formunda hiçbir alan boş geçilemez.');
     } else {
       transactions.isIncome = false;
+      navigation.dispatch(
+        CommonActions.navigate({
+          name: 'History',
+          params: {transactions},
+        }),
+      );
       navigation.dispatch(
         CommonActions.navigate({
           name: 'MyExpenses',
@@ -153,6 +165,7 @@ function AddExpense({navigation}) {
             />
             <DatePicker
               modal
+              mode="date"
               open={datePickerOpen}
               date={date}
               onConfirm={date => {
@@ -184,6 +197,7 @@ function AddExpense({navigation}) {
             />
             <DatePicker
               modal
+              mode="date"
               open={datePickerOpen}
               date={date}
               onConfirm={date => {

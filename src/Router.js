@@ -11,7 +11,7 @@ import History from './screens/HistoryScreen';
 const Tab = createBottomTabNavigator();
 
 const screenOptions = ({route}) => ({
-  tabBarIcon: ({focused, color, size}) => {
+  tabBarIcon: ({focused, color}) => {
     let iconName;
 
     if (route.name === 'MyExpenses') {
@@ -43,12 +43,12 @@ function Router() {
         <Tab.Screen
           name="Transaction"
           component={Transaction}
-          options={{headerShadowVisible: false}}
+          options={{headerTitle: 'Gelir/Gider Ekle'}}
         />
         <Tab.Screen
           name="History"
           component={History}
-          options={{headerShadowVisible: false}}
+          options={{headerTitle: 'Geçmiş'}}
         />
       </Tab.Navigator>
     </NavigationContainer>
