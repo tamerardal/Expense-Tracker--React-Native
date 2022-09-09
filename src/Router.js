@@ -11,21 +11,21 @@ import History from './screens/HistoryScreen';
 const Tab = createBottomTabNavigator();
 
 const screenOptions = ({route}) => ({
-  tabBarIcon: ({focused, color}) => {
+  tabBarIcon: ({focused, color, size}) => {
     let iconName;
 
-    if (route.name === 'Summary') {
-      iconName = focused ? 'home' : 'home';
-    } else if (route.name === 'Transaction') {
-      iconName = focused ? 'contrast' : 'contrast';
-    } else if (route.name === 'History') {
-      iconName = focused
-        ? 'clipboard-text-clock-outline'
-        : 'clipboard-text-clock-outline';
+    if (route.name === 'Özet') {
+      iconName = 'home';
+      size = focused ? 32 : 24;
+    } else if (route.name === 'İşlem Ekle') {
+      iconName = 'contrast';
+      size = focused ? 32 : 24;
+    } else if (route.name === 'Geçmiş') {
+      iconName = 'clipboard-text-clock-outline';
+      size = focused ? 32 : 24;
     }
 
-    // You can return any component that you like here!
-    return <Icon name={iconName} size={32} color={color} />;
+    return <Icon name={iconName} size={size} color={color} />;
   },
   tabBarActiveTintColor: '#4682b4',
   tabBarInactiveTintColor: 'gray',
@@ -36,17 +36,19 @@ function Router() {
     <NavigationContainer>
       <Tab.Navigator screenOptions={screenOptions}>
         <Tab.Screen
-          name="Summary"
+          name="Özet"
           component={Summary}
-          options={{headerTitle: 'Harcamalarım'}}
+          options={{headerTitle: 'Özet'}}
         />
         <Tab.Screen
-          name="Transaction"
+          name="İşlem Ekle"
           component={Transaction}
-          options={{headerTitle: 'Gelir/Gider Ekle'}}
+          options={{
+            headerShown: false,
+          }}
         />
         <Tab.Screen
-          name="History"
+          name="Geçmiş"
           component={History}
           options={{headerTitle: 'Geçmiş'}}
         />
