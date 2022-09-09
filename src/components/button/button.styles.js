@@ -9,9 +9,11 @@ export default StyleSheet.create({
     marginTop: 10,
     marginLeft: 5,
     marginRight: 5,
+    elevation: 10,
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
+    color: 'white',
   },
 });

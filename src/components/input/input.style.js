@@ -9,11 +9,9 @@ export default StyleSheet.create({
     height: 40,
   },
   inputContainer: {
-    borderBottomWidth: 1,
-    backgroundColor: 'lightgrey',
-    borderTopEndRadius: 5,
-    borderTopStartRadius: 5,
-    borderBottomColor: 'grey',
+    backgroundColor: '#dcdcdc',
+    borderRadius: 15,
     margin: 5,
+    elevation: 10,
   },
 });

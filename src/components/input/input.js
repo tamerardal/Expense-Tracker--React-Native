@@ -9,6 +9,7 @@ function Input({label, onChangeText}) {
         style={styles.label}
         placeholder={label}
         onChangeText={onChangeText}
+        autoFocus={true}
       />
     </View>
   );

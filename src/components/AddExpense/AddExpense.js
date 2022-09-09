@@ -25,6 +25,7 @@ const AddExpense = ({
     <View style={styles.container}>
       <DropDownPicker
         searchTextInputProps="Kategori seçiniz"
+        placeholder="Harcama kategorisini seçiniz"
         open={open}
         value={value}
         items={items}

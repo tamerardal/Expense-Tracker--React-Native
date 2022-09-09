@@ -25,6 +25,7 @@ const AddIncome = ({
     <View style={styles.container}>
       <DropDownPicker
         searchTextInputProps="Kategori seçiniz"
+        placeholder="Gelir kategorisini seçiniz"
         open={open}
         value={value}
         items={items}
