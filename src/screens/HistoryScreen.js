@@ -41,6 +41,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: 'lightgray',
   },
+  seperator: {
+    borderWidth: 0.2,
+    borderColor: 'gray',
+    marginRight: 10,
+    marginLeft: 10,
+  },
 });
 
 export default HistoryScreen;

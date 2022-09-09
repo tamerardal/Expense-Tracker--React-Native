@@ -24,7 +24,7 @@ const TransactionCard = ({transaction}) => {
   return (
     <View style={styles.cardContainer} key={transaction}>
       <View style={styles.innerContainer}>
-        <Text style={{fontSize: 12, width: 105}} numberOfLines={1}>
+        <Text style={{fontSize: 12, width: 110}} numberOfLines={1}>
           {transaction.date.toString()}
         </Text>
         <Text style={styles.title}>{transaction.value}</Text>

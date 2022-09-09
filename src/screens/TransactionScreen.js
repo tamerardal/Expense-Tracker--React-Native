@@ -14,6 +14,8 @@ import {CommonActions} from '@react-navigation/native';
 import AddExpense from '../components/AddExpense/AddExpense';
 import AddIncome from '../components/AddIncome/AddIncome';
 
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 function TransactionScreen({navigation}) {
   let id = Math.random();
   const [price, setPrice] = useState(0);
@@ -24,17 +26,55 @@ function TransactionScreen({navigation}) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [itemsExpense, setItemsExp] = useState([
-    {label: 'Kira', value: 'Kira'},
-    {label: 'Market', value: 'Market'},
-    {label: 'Fatura', value: 'Fatura'},
-    {label: 'Eğlence', value: 'Eğlence'},
-    {label: 'Giyim', value: 'Giyim'},
-    {label: 'Ulaşım', value: 'Ulaşım'},
-    {label: 'Diğer', value: 'Diğer'},
+    {
+      label: 'Kira',
+      value: 'Kira',
+      icon: () => <Icon name={'home'} size={14} color="indianred" />,
+    },
+    {
+      label: 'Market',
+      value: 'Market',
+      icon: () => <Icon name={'cart-variant'} size={14} color="indianred" />,
+    },
+    {
+      label: 'Fatura',
+      value: 'Fatura',
+      icon: () => <Icon name={'file'} size={14} color="indianred" />,
+    },
+    {
+      label: 'Eğlence',
+      value: 'Eğlence',
+      icon: () => <Icon name={'glass-cocktail'} size={14} color="indianred" />,
+    },
+    {
+      label: 'Giyim',
+      value: 'Giyim',
+      icon: () => <Icon name={'tshirt-crew'} size={14} color="indianred" />,
+    },
+    {
+      label: 'Ulaşım',
+      value: 'Ulaşım',
+      icon: () => <Icon name={'bus'} size={14} color="indianred" />,
+    },
+    {
+      label: 'Diğer',
+      value: 'Diğer',
+      icon: () => (
+        <Icon name={'language-javascript'} size={14} color="indianred" />
+      ),
+    },
   ]);
   const [itemsIncome, setItemsInc] = useState([
-    {label: 'Maaş', value: 'Maaş'},
-    {label: 'Ek Gelir', value: 'Ek Gelir'},
+    {
+      label: 'Maaş',
+      value: 'Maaş',
+      icon: () => <Icon name={'cash-multiple'} size={14} color="green" />,
+    },
+    {
+      label: 'Ek Gelir',
+      value: 'Ek Gelir',
+      icon: () => <Icon name={'cash'} size={14} color="green" />,
+    },
   ]);
 
   const [datePickerOpen, setDatePickerOpen] = useState(false);
@@ -49,19 +89,19 @@ function TransactionScreen({navigation}) {
 
   function inchandleSubmit() {
     if (!price || !value || !date) {
-      Alert.alert('HATA', 'Kayıt formunda hiçbir alan boş geçilemez.');
+      Alert.alert('HATA', 'Kategori ve miktar alanı boş geçilemez.');
     } else {
       transactions.isIncome = true;
       //navigation.navigate('MyExpensesScreen', {transactions});
       navigation.dispatch(
         CommonActions.navigate({
-          name: 'History',
+          name: 'Geçmiş',
           params: {transactions},
         }),
       );
       navigation.dispatch(
         CommonActions.navigate({
-          name: 'Summary',
+          name: 'Özet',
           params: {transactions},
         }),
       );
@@ -70,18 +110,18 @@ function TransactionScreen({navigation}) {
   }
   function exphandleSubmit() {
     if (!price || !value || !date) {
-      Alert.alert('HATA', 'Kayıt formunda hiçbir alan boş geçilemez.');
+      Alert.alert('HATA', 'Kategori ve miktar alanı boş geçilemez.');
     } else {
       transactions.isIncome = false;
       navigation.dispatch(
         CommonActions.navigate({
-          name: 'History',
+          name: 'Geçmiş',
           params: {transactions},
         }),
       );
       navigation.dispatch(
         CommonActions.navigate({
-          name: 'Summary',
+          name: 'Özet',
           params: {transactions},
         }),
       );
@@ -91,46 +131,49 @@ function TransactionScreen({navigation}) {
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <FlatList
-        ListHeaderComponent={() => (
-          <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-            <TouchableOpacity
-              style={styles.buttonContainer}
-              onPress={() => setViewMode('expense')}>
-              <Text
-                style={{
-                  fontSize: 20,
-                  fontWeight: 'bold',
-                  margin: 15,
-                  color: viewMode === 'expense' ? '#4682b4' : 'grey',
-                  borderBottomWidth: viewMode === 'expense' ? 1 : 0,
-                  borderColor: viewMode === 'expense' ? '#4682b4' : 'grey',
-                }}>
-                GİDER
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.buttonContainer}
-              onPress={() => setViewMode('income')}>
-              <Text
-                style={{
-                  fontSize: 20,
-                  fontWeight: 'bold',
-                  margin: 15,
-                  color: viewMode === 'income' ? '#4682b4' : 'grey',
-                  borderBottomWidth: viewMode === 'income' ? 1 : 0,
-                  borderColor: viewMode === 'income' ? '#4682b4' : 'grey',
-                }}>
-                GELİR
-              </Text>
-            </TouchableOpacity>
-          </View>
-        )}
-      />
-      <ScrollView
-        contentContainerStyle={{
-          paddingBottom: 60,
+      <View
+        style={{
+          flex: 0.6,
         }}>
+        <FlatList
+          data={null}
+          ListHeaderComponent={() => (
+            <View
+              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+              <TouchableOpacity
+                style={styles.buttonContainer}
+                onPress={() => setViewMode('expense')}>
+                <Text
+                  style={{
+                    fontSize: 20,
+                    fontWeight: 'bold',
+                    margin: 15,
+                    color: viewMode === 'expense' ? '#4682b4' : 'grey',
+                    borderBottomWidth: viewMode === 'expense' ? 1 : 0,
+                    borderColor: viewMode === 'expense' ? '#4682b4' : 'grey',
+                  }}>
+                  GİDER
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.buttonContainer}
+                onPress={() => setViewMode('income')}>
+                <Text
+                  style={{
+                    fontSize: 20,
+                    fontWeight: 'bold',
+                    margin: 15,
+                    color: viewMode === 'income' ? '#4682b4' : 'grey',
+                    borderBottomWidth: viewMode === 'income' ? 1 : 0,
+                    borderColor: viewMode === 'income' ? '#4682b4' : 'grey',
+                  }}>
+                  GELİR
+                </Text>
+              </TouchableOpacity>
+            </View>
+          )}
+        />
+
         {viewMode === 'expense' && (
           <AddExpense
             date={date}
@@ -163,7 +206,7 @@ function TransactionScreen({navigation}) {
             setPrice={setPrice}
           />
         )}
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 }

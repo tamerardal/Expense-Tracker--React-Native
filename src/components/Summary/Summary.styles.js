@@ -32,7 +32,7 @@ export default StyleSheet.create({
   expenseTitle: {
     fontSize: 15,
     fontWeight: '600',
-    color: 'tomato',
+    color: '#cd5c5c',
   },
   piechart: {
     marginTop: 10,
