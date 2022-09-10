@@ -4,13 +4,20 @@ import PieChart from 'react-native-pie-chart';
 
 import styles from './Summary.styles';
 
-const Summary = ({widthAndHeight, series, sliceColor}) => {
+const Summary = ({
+  widthAndHeight,
+  series,
+  sliceColor,
+  incsum,
+  expsum,
+  kira,
+}) => {
   return (
     <View>
       <View style={styles.container}>
         <View style={styles.totalContainer}>
-          <Text style={styles.incomeTitle}>Toplam Gelir: ₺</Text>
-          <Text style={styles.expenseTitle}>Toplam Gider: ₺</Text>
+          <Text style={styles.incomeTitle}>Toplam Gelir: ₺{incsum} </Text>
+          <Text style={styles.expenseTitle}>Toplam Gider: ₺{expsum} </Text>
           <Text />
         </View>
       </View>
@@ -20,14 +27,14 @@ const Summary = ({widthAndHeight, series, sliceColor}) => {
           series={series}
           sliceColor={sliceColor}
           doughnut={true}
-          coverRadius={0.45}
-          coverFill={'#FFF'}
+          coverRadius={0.3}
+          coverFill={'#d3d3d3'}
           style={styles.piechart}
         />
       </View>
       <View style={styles.container}>
         <Text style={styles.mostExpTit}>
-          En fazla harcama yapılan kategori:{' '}
+          En fazla harcama yapılan kategori:{kira}
         </Text>
       </View>
     </View>

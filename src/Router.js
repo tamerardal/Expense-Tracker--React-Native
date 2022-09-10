@@ -50,7 +50,10 @@ function Router() {
         <Tab.Screen
           name="Geçmiş"
           component={History}
-          options={{headerTitle: 'Geçmiş'}}
+          options={{
+            headerTitle: 'Geçmiş',
+            tabBarActiveBackgroundColor: '#7cfc00',
+          }}
         />
       </Tab.Navigator>
     </NavigationContainer>
