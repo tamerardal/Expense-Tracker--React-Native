@@ -52,7 +52,6 @@ function Router() {
           component={History}
           options={{
             headerTitle: 'Geçmiş',
-            tabBarActiveBackgroundColor: '#7cfc00',
           }}
         />
       </Tab.Navigator>
