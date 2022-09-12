@@ -39,7 +39,7 @@ export default StyleSheet.create({
     marginBottom: 10,
   },
   mostExpTit: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold',
     marginLeft: 10,
   },
